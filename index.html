@@ -6,103 +6,152 @@
 <title>Ultra UI Sinhala Quote</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 
-    body {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
-        background-size: 600% 600%;
-        animation: gradientBG 10s ease infinite;
-    }
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+    background-size: 600% 600%;
+    animation: gradientBG 10s ease infinite;
+}
 
-    @keyframes gradientBG {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-    }
+/* Background animation */
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 
-    .card {
-        width: 90%;
-        max-width: 700px;
-        padding: 40px;
-        border-radius: 25px;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 0 40px rgba(0,0,0,0.3);
-        color: #fff;
-        text-align: center;
-        animation: fadeIn 1.5s ease;
-    }
+/* 💩 Rain container */
+.rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+/* 💩 particles */
+.poop {
+    position: absolute;
+    top: -50px;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.9;
+}
 
-    p {
-        font-size: 18px;
-        line-height: 1.8;
-        margin-bottom: 20px;
-        letter-spacing: 0.5px;
+/* Falling animation */
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
     }
+}
 
-    .highlight {
-        color: #00f7ff;
-        font-weight: bold;
-        text-shadow: 0 0 10px #00f7ff;
-        transition: 0.3s;
-    }
+/* Card UI */
+.card {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
 
-    .highlight:hover {
-        color: #ff00c8;
-        text-shadow: 0 0 20px #ff00c8;
-    }
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(40px);}
+    to {opacity: 1; transform: translateY(0);}
+}
 
-    .footer-emoji {
-        margin-top: 20px;
-        font-size: 26px;
-        animation: float 2s ease-in-out infinite;
-    }
+p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
 
-    @keyframes float {
-        0%,100% {transform: translateY(0);}
-        50% {transform: translateY(-10px);}
-    }
+.highlight {
+    color: #00f7ff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00f7ff;
+    transition: 0.3s;
+}
+
+.highlight:hover {
+    color: #ff00c8;
+    text-shadow: 0 0 20px #ff00c8;
+}
+
+.footer-emoji {
+    margin-top: 20px;
+    font-size: 26px;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+}
 
 </style>
 </head>
 
 <body>
 
+<div class="rain" id="rain"></div>
+
 <div class="card">
     <p>
         අනුන්ගේ දෙයක් හොරකම් කරලා තමන්ගේ 
         <span class="highlight">Potential Energy</span> එක වැඩි කරගන්න හදන එක ලොකු විහිළුවක්.
         මාව හදන්න කලින් ඔය ව්‍යාජ බණ වේශය අස්සේ හැංගිලා ඉන්න, අනුන්ගේ වචන කොපි කරන 
-        <span class="highlight">Inertia (අලසකම)</span> තියෙන 'හිස්' මනුස්සයාව පොඩ්ඩක් සුද්ධ කරගන්න.
+        <span class="highlight">අලසකම</span> තියෙන 'හිස්' මනුස්සයාව පොඩ්ඩක් සුද්ධ කරගන්න.
     </p>
 
     <p>
         දේශනා කරන්න කලින් මනුස්සකම කියන 
-        <span class="highlight">Direction (දිශාව)</span> හදාගත්තොත් හොඳයි නේද?
+        <span class="highlight">දිශාව</span> හදාගත්තොත් හොඳයි නේද?
     </p>
 
     <div class="footer-emoji">😏⚛️🔥</div>
 </div>
+
+<script>
+const rain = document.getElementById("rain");
+
+function createPoop() {
+    const poop = document.createElement("div");
+    poop.classList.add("poop");
+    poop.innerText = "💩";
+
+    poop.style.left = Math.random() * 100 + "vw";
+    poop.style.fontSize = (Math.random() * 20 + 15) + "px";
+    poop.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+    rain.appendChild(poop);
+
+    setTimeout(() => {
+        poop.remove();
+    }, 6000);
+}
+
+// continuous rain
+setInterval(createPoop, 150);
+</script>
 
 </body>
 </html>
